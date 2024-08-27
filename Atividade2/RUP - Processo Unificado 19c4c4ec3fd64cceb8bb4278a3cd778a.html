@@ -1,0 +1,686 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>RUP - Processo Unificado</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 237, 214, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(249, 228, 188, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="19c4c4ec-3fd6-4cce-b8bb-4278a3cd778a" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/compose_gray.svg"/></div><h1 class="page-title">RUP - Processo Unificado</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/document_gray.svg" style="width:14px;height:14px"/></span>Aula</th><td><a href="https://www.notion.so/Engenharia-de-Software-87ac09a390d542799a598246b7612735?pvs=21"><span class="icon">5️⃣</span>Engenharia de Software</a></td></tr><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/graduate_gray.svg" style="width:14px;height:14px"/></span>Curso / Interesse</th><td><a href="https://www.notion.so/An-lise-e-Desenvolvimento-de-Sistema-FATEC-2a6b2e74b94c42ef8d536dcb44aa1b03?pvs=21"><img class="icon" src="https://www.notion.so/icons/gradebook_gray.svg"/>Análise e Desenvolvimento de Sistema - FATEC</a></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesSelect"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM7.62402 10.6348C7.79492 10.915 8.20508 10.9287 8.37598 10.6348L10.666 6.73145C10.8574 6.41016 10.7002 6.04102 10.3652 6.04102H5.62793C5.29297 6.04102 5.14941 6.43066 5.32031 6.73145L7.62402 10.6348Z"></path></svg></span>Tipo</th><td><span class="selected-value select-value-color-pink">Trabalho</span></td></tr></tbody></table></header><div class="page-body"><h2 id="428de0ee-ae53-4d06-89b6-61fce56eb4ec" class="block-color-gray_background">Minha Anotação</h2><hr id="d10b8d70-ad15-436c-86ad-251ee184d7b8"/><figure id="54d82f0f-196d-470e-86f4-e87c6cbb5ac1"><div class="source"><a href="https://www.youtube.com/watch?v=LLAqBv9YY2k">https://www.youtube.com/watch?v=LLAqBv9YY2k</a></div></figure><figure id="db45d2e6-ec7e-43fb-be83-85bf79dbd201"><div class="source"><a href="https://www.youtube.com/watch?v=mqP56sht3E0">https://www.youtube.com/watch?v=mqP56sht3E0</a></div></figure><figure id="e287eeda-a24c-44b9-a051-9377d1ce2002" class="image"><a href="RUP%20-%20Processo%20Unificado%2019c4c4ec3fd64cceb8bb4278a3cd778a/O_Processo_Unificado_da_Rational_(RUP).svg"><img style="width:507px" src="RUP%20-%20Processo%20Unificado%2019c4c4ec3fd64cceb8bb4278a3cd778a/O_Processo_Unificado_da_Rational_(RUP).svg"/></a></figure><p id="86d6ec44-f0f8-4ff5-92a6-978582a2b2f5" class="">
+</p><p id="91bd91d1-f639-442d-afa5-43dcbe829aa0" class="">
+</p><figure id="4fb24240-7e49-4d3f-b5bc-2d7d597a87ad" class="image"><a href="RUP%20-%20Processo%20Unificado%2019c4c4ec3fd64cceb8bb4278a3cd778a/image.png"><img style="width:507px" src="RUP%20-%20Processo%20Unificado%2019c4c4ec3fd64cceb8bb4278a3cd778a/image.png"/></a></figure><h1 id="570071a4-d213-40c7-8997-13c0ba2481ae" class=""><strong>O Processo Unificado da Rational (RUP)</strong></h1><h2 id="d6c2f7b8-5376-4fb9-bcdf-391e5bbe866f" class=""><strong>Definição e Características do RUP</strong></h2><h3 id="05f70c4e-6bc2-4231-84ff-a655116c7d95" class=""><strong>O que é o RUP?</strong></h3><ul id="b8bf3016-d3e6-4a2a-b3ec-b7448bb9a61d" class="bulleted-list"><li style="list-style-type:disc">O RUP (Rational Unified Process) é um processo proprietário de engenharia de software criado pela Rational Software Corporation, adquirida pela IBM.</li></ul><ul id="e7f2bf83-2bcd-415e-abfb-b73906dbe018" class="bulleted-list"><li style="list-style-type:disc">Apesar da aquisição, o nome mais conhecido ainda é RUP, mas também pode ser chamado de iRUP (IBM Rational Unified Process).</li></ul><ul id="3b78cd42-2850-4278-a4d8-c46ab09ad4f1" class="bulleted-list"><li style="list-style-type:disc">Utiliza uma abordagem de orientação a objetos, documentada usando a notação UML (Unified Modeling Language).</li></ul><h3 id="b93c5f13-56f3-465b-b644-63d15ff2a8b7" class=""><strong>Características Principais do RUP</strong></h3><ul id="166f4803-ad0c-4381-b784-20b7d6f5d0bb" class="bulleted-list"><li style="list-style-type:disc"><strong>Iterativo e Incremental</strong>:<ul id="acf9f82c-1be4-4aa3-acf6-8d2ce51791da" class="bulleted-list"><li style="list-style-type:circle"><strong>Iterativo</strong>: Progresso através de tentativas e refinamento sucessivos.</li></ul><ul id="ce9fab5f-5a7b-4e89-bf1c-680d26e1f348" class="bulleted-list"><li style="list-style-type:circle"><strong>Incremental</strong>: Software construído e entregue em partes, cada uma representando um subconjunto de funcionalidades completas.</li></ul></li></ul><h2 id="3053594e-a847-4565-abea-0b568e57ac75" class=""><strong>Objetivos e Fases do RUP</strong></h2><h3 id="49bc502f-71e6-4d74-ba4a-38ee15ae6554" class=""><strong>Objetivo do RUP</strong></h3><ul id="9a144755-aef1-4c61-aca5-fd7db90793d6" class="bulleted-list"><li style="list-style-type:disc">Assegurar a produção de software de alta qualidade que atenda às necessidades do usuário, dentro dos prazos e orçamento estabelecidos.</li></ul><h3 id="0f88bccc-1d4e-43a4-81c7-ef46bf90bdad" class=""><strong>Fases do Ciclo de Vida do RUP</strong></h3><ul id="e50cad27-a545-4cae-9af7-457ab4a74909" class="bulleted-list"><li style="list-style-type:disc"><strong>Concepção</strong>: Define o objetivo do projeto e sua viabilidade.</li></ul><ul id="acf2efb2-8c5d-4a6c-b20b-d03c2f1d06c0" class="bulleted-list"><li style="list-style-type:disc"><strong>Elaboração</strong>: Desenvolve o plano do projeto, especifica características e estabelece a linha base da arquitetura.</li></ul><ul id="89e0550a-e30d-4712-bf71-45fd211f1561" class="bulleted-list"><li style="list-style-type:disc"><strong>Construção</strong>: Realiza a construção efetiva do produto.</li></ul><ul id="18be5f35-e0ce-47fc-9f2d-b9d06791de43" class="bulleted-list"><li style="list-style-type:disc"><strong>Transição</strong>: Assegura que o software esteja disponível e funcional para os usuários finais.</li></ul><h2 id="9eb4a9e4-22c8-4a7b-bda4-b975d07bada6" class=""><strong>Disciplinas e Modelos do RUP</strong></h2><h3 id="5da50e26-8955-49e6-bcc8-4ea017f4b81e" class=""><strong>Disciplinas do RUP</strong></h3><ul id="44b85837-6062-4fc8-b5e3-55001e91db8e" class="bulleted-list"><li style="list-style-type:disc"><strong>Modelagem de Negócios</strong></li></ul><ul id="df3bb029-70a2-4659-a601-771938fbadca" class="bulleted-list"><li style="list-style-type:disc"><strong>Requisitos</strong></li></ul><ul id="e61094fd-9b5f-4fbb-bf99-164922f3bb6d" class="bulleted-list"><li style="list-style-type:disc"><strong>Análise</strong></li></ul><ul id="d58df3a6-7353-4351-b0a2-f662197c166e" class="bulleted-list"><li style="list-style-type:disc"><strong>Design</strong></li></ul><ul id="e9aa897a-70be-4922-9a29-52dd535e0bbc" class="bulleted-list"><li style="list-style-type:disc"><strong>Implementação</strong></li></ul><ul id="c2876caf-f8f2-4ae2-a649-8fc7eaa05534" class="bulleted-list"><li style="list-style-type:disc"><strong>Teste</strong></li></ul><ul id="ae8fddda-9d6e-4f5d-b28a-5a11460093d1" class="bulleted-list"><li style="list-style-type:disc"><strong>Implantação</strong></li></ul><ul id="dc80f737-a328-4b6d-927c-cb140ccce8ff" class="bulleted-list"><li style="list-style-type:disc"><strong>Gerenciamento de Configuração e Mudança</strong></li></ul><ul id="8dffb265-d062-4e28-8311-23e3e1af0add" class="bulleted-list"><li style="list-style-type:disc"><strong>Gerenciamento de Projeto</strong></li></ul><h3 id="97472e34-7a85-4f28-b7fa-c87592cc78da" class=""><strong>Modelos Associados às Disciplinas</strong></h3><ul id="f8210255-9a8d-4ae8-bbc1-2ca2c91cee87" class="bulleted-list"><li style="list-style-type:disc"><strong>Requisitos</strong>: Modelo de Casos de Uso.</li></ul><ul id="a1d5ec46-d5a9-4e2d-be15-80f26104ccc0" class="bulleted-list"><li style="list-style-type:disc"><strong>Análise</strong>: Modelo de Análise.</li></ul><ul id="2c07986a-0171-497d-a84c-3474f5c49c8e" class="bulleted-list"><li style="list-style-type:disc"><strong>Design</strong>: Modelo de Projeto, Modelo de Implantação.</li></ul><ul id="95e9e96b-e05d-4907-96ab-56b5cdb51901" class="bulleted-list"><li style="list-style-type:disc"><strong>Implementação</strong>: Modelo de Implementação.</li></ul><ul id="598c3889-7096-4acc-8341-9abed7d5c0c1" class="bulleted-list"><li style="list-style-type:disc"><strong>Teste</strong>: Modelo de Teste.</li></ul><h2 id="1f8bc8af-319c-4eae-bbd8-302aa91920e5" class=""><strong>Benefícios do Uso do RUP</strong></h2><ul id="be83cada-02ef-4e02-84d3-b73b39006578" class="bulleted-list"><li style="list-style-type:disc"><strong>Qualidade de Software</strong></li></ul><ul id="3cfcb46f-da1f-4404-8caf-f34569da15b1" class="bulleted-list"><li style="list-style-type:disc"><strong>Produtividade no Desenvolvimento</strong></li></ul><ul id="06a5770a-920f-43c9-9af1-736e6a3168fd" class="bulleted-list"><li style="list-style-type:disc"><strong>Facilidade de Operação e Manutenção</strong></li></ul><ul id="b36c49e0-6c43-41f1-ba58-4bab3ac98ed7" class="bulleted-list"><li style="list-style-type:disc"><strong>Controle sobre Desenvolvimento (Custos, Prazos, Qualidade)</strong></li></ul><ul id="e90702a3-4500-47bf-b9b2-7009f36cc39b" class="bulleted-list"><li style="list-style-type:disc"><strong>Estimativa Precisa de Prazos e Custos</strong></li></ul><ul id="fa7815c1-2e77-4cd1-bff3-9ffa612c3c79" class="bulleted-list"><li style="list-style-type:disc"><strong>Garantia de Qualidade</strong> através da estrutura de disciplinas e modelos.</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
